@@ -274,12 +274,12 @@ instalar o mysql:
 brew install mysql
 brew services start mysql
 
-    conferir:
-        brew services list          # mysql deve aparecer como "started"
-        mysql -u root -e "SELECT VERSION();"
+conferir:
+brew services list # mysql deve aparecer como "started"
+mysql -u root -e "SELECT VERSION();"
 
-    Rodar o Mysql para rodar shell:
-    mysql -u root
+Rodar o Mysql para rodar shell:
+mysql -u root
 
 Criar ambiente virtual:
 python3 -m venv .venv
@@ -296,4 +296,3 @@ Dica para um projeto SQLite + Mysql
 Usar uuid para que os aparelhos offline não gerem o mesmo id em novas colunas.
 import uuid
 novo_id = str(uuid.uuid4()) # Ex: 'c9bf9e57-1685-4c89-bafb-ff5af830be8a'
-# Crud-Flask-Mysql

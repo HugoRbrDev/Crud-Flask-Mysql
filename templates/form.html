@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block titulo %}{{ 'Editar' if pessoa else 'Nova' }}
+pessoa{% endblock %} {% block conteudo %}
+<h1>{{ 'Editar' if pessoa else 'Nova' }} pessoa</h1>
+
+<form method="post" action="{{ action }}">
+  <label>
+    Nome
+    <input
+      type="text"
+      name="nome"
+      value="{{ pessoa.nome if pessoa }}"
+      required
+    />
+  </label>
+
+  <label>
+    Idade
+    <input
+      type="number"
+      name="idade"
+      min="0"
+      value="{{ pessoa.idade if pessoa }}"
+      required
+    />
+  </label>
+
+  <div class="acoes">
+    <button type="submit">Salvar</button>
+    <a href="{{ url_for('listar') }}">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

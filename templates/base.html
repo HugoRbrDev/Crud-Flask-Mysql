@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block titulo %}CRUD Flask + MySQL{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='estilo.css') }}"
+    />
+  </head>
+  <body>
+    <main>
+      {% with mensagens = get_flashed_messages(with_categories=true) %} {% if
+      mensagens %}
+      <ul class="flash">
+        {% for categoria, msg in mensagens %}
+        <li class="{{ categoria }}">{{ msg }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %} {% block conteudo %}{% endblock %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block conteudo %}
+<h1>Pessoas</h1>
+<p><a class="botao" href="{{ url_for('novo') }}">+ Novo cadastro</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in pessoas %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.nome }}</td>
+      <td>{{ p.idade }}</td>
+      <td>
+        <a href="{{ url_for('editar', id=p.id) }}">Editar</a>
+        <form
+          action="{{ url_for('excluir', id=p.id) }}"
+          method="post"
+          onsubmit="return confirm('Excluir {{ p.nome }}?')"
+        >
+          <button type="submit" class="link">Excluir</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4">Nenhum registro ainda.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
